@@ -8,3 +8,5 @@ Static site for the Every Other Weekend sauce brand. No build step: Netlify publ
 - `eow.js`: small shared runtime; forms post to FormSubmit, which emails everyotherweekendsauce@gmail.com
 
 If a send fails, the visitor is offered a prefilled email to the same inbox so no lead is lost.
+
+Note: FormSubmit activation is tied to the site's web address. After renaming the Netlify site or connecting a custom domain, submit a form once and click the new "Activate Form" email in the brand inbox.
