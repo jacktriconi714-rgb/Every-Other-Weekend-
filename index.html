@@ -42,6 +42,11 @@
 <a href="preorder.html" class="btn btn-primary">Reserve bottles · $0 today</a>
 <span class="hero-price">$7.99 a bottle · nothing due until it ships</span>
 </div>
+<p class="hero-target">Target: spring 2027</p>
+<div class="counter" data-counter hidden>
+<p class="counter-text" data-counter-text></p>
+<div class="counter-bar" data-counter-bar hidden role="progressbar" aria-label="First batch reserved" aria-valuemin="0"><div class="counter-fill" data-counter-fill></div></div>
+</div>
 <div class="hero-form">
 <div data-if="heroNotSent">
 <div data-form class="inline-form">
@@ -59,6 +64,7 @@
 <div role="status" class="hero-thanks card card-pad">
 <p class="eyebrow">You’re on the list</p>
 <p>We’ll email you the moment the first batch is ready.</p>
+<button type="button" class="btn btn-ghost btn-sm share-btn" data-share>Know someone who grills? Send them this</button>
 </div>
 </div>
 </div>
@@ -132,6 +138,15 @@
 </div>
 </article>
 </div>
+</section>
+
+<section id="watch" class="wrap section section-line" data-videos hidden>
+<div class="section-head">
+<p class="eyebrow">Watch</p>
+<h2 class="h-section">Fresh from the kitchen.</h2>
+</div>
+<div class="video-list" data-video-list></div>
+<p class="watch-follow"><a href="https://www.tiktok.com/@everyotherweekend" target="_blank" rel="noopener">Follow @everyotherweekend on TikTok</a> · <a href="https://www.instagram.com/everyotherweekend/" target="_blank" rel="noopener">Instagram</a></p>
 </section>
 
 <section class="wrap section section-line">
@@ -226,13 +241,14 @@
 <h3 class="h-card">You’re on the list<span data-t="nComma"></span>.</h3>
 <p class="muted">We’ll email you the moment the first batch is ready, and when it lands on a shelf near you.</p>
 <p class="muted">Questions? Email <a href="mailto:everyotherweekendsauce@gmail.com?subject=Pre-sale%20list">everyotherweekendsauce@gmail.com</a> with “Pre-sale list” in the subject, or DM <a href="https://www.instagram.com/everyotherweekend/" target="_blank" rel="noopener">@everyotherweekend</a>.</p>
-<div><button type="button" class="btn btn-ghost btn-sm" data-click="editNotify">Change my details</button></div>
+<div class="row-tight"><button type="button" class="btn btn-ghost btn-sm share-btn" data-share>Know someone who grills? Send them this</button><button type="button" class="btn btn-ghost btn-sm" data-click="editNotify">Change my details</button></div>
 </div>
 </div>
 </div>
 </div>
 </section>
 </main>
+<a href="preorder.html" class="btn btn-primary sticky-cta" data-sticky hidden>Pre-order · $0 today</a>
 
 <footer id="contact" class="site-footer">
 <div class="wrap">

@@ -21,6 +21,73 @@ function eowSend(subject, message, replyTo) {
     return j;
   }); });
 }
+var EOW_FLAVOR_NAMES = { original: 'The Original', grill: 'Grill Master', smoke: 'Smoke Alarm Special' };
+// Shows config-gated content. Everything it touches starts hidden in the markup.
+function eowApplyConfig(root) {
+  var C = EOW_CONFIG;
+  var reserved = Number(C.reserved) || 0, total = Number(C.batchTotal) || 0;
+  root.querySelectorAll('[data-counter]').forEach(function (box) {
+    box.hidden = !(reserved > 0);
+    var t = box.querySelector('[data-counter-text]');
+    if (t) t.textContent = reserved.toLocaleString('en-US') + ' bottles reserved from Batch 001';
+    var bar = box.querySelector('[data-counter-bar]');
+    if (bar) {
+      bar.hidden = !(reserved > 0 && total > 0);
+      if (total > 0) {
+        bar.setAttribute('aria-valuenow', String(reserved));
+        bar.setAttribute('aria-valuemax', String(total));
+        var fill = bar.querySelector('[data-counter-fill]');
+        if (fill) fill.style.width = Math.min(100, reserved / total * 100) + '%';
+      }
+    }
+  });
+  var strip = root.querySelector('[data-videos]');
+  var videos = Array.isArray(C.videos) ? C.videos.filter(function (v) { return v && /^https:\/\//.test(String(v.url || '')); }) : [];
+  if (strip) {
+    var list = strip.querySelector('[data-video-list]');
+    if (list && videos.length) {
+      list.textContent = '';
+      videos.forEach(function (v) {
+        var a = document.createElement('a');
+        a.className = 'video-card'; a.href = String(v.url); a.target = '_blank'; a.rel = 'noopener';
+        var img = document.createElement('img');
+        img.src = String(v.poster || ''); img.alt = String(v.title || 'Video'); img.loading = 'lazy'; img.width = 360; img.height = 640;
+        var span = document.createElement('span');
+        span.className = 'video-title'; span.textContent = String(v.title || '');
+        a.appendChild(img); a.appendChild(span); list.appendChild(a);
+      });
+    }
+    strip.hidden = !videos.length;
+  }
+  var bottles = C.bottles || {};
+  root.querySelectorAll('img.bottle[data-bottle]').forEach(function (img) {
+    var key = img.getAttribute('data-bottle');
+    if (!bottles[key]) { img.hidden = true; return; }
+    img.src = 'img/bottle-' + key + '.webp';
+    img.alt = (EOW_FLAVOR_NAMES[key] || key) + ' bottle';
+    img.hidden = false;
+  });
+  var sticky = root.querySelector('[data-sticky]');
+  var heroEl = document.getElementById('top'), findEl = document.getElementById('find');
+  if (sticky && heroEl && 'IntersectionObserver' in window && window.matchMedia) {
+    var mq = window.matchMedia('(max-width: 720px)'), pastHero = false, atFind = false;
+    var update = function () { sticky.hidden = !(mq.matches && pastHero && !atFind); };
+    new IntersectionObserver(function (es) { es.forEach(function (e) { pastHero = !e.isIntersecting && e.boundingClientRect.top < 0; }); update(); }).observe(heroEl);
+    if (findEl) new IntersectionObserver(function (es) { es.forEach(function (e) { atFind = e.isIntersecting; }); update(); }).observe(findEl);
+    if (mq.addEventListener) mq.addEventListener('change', update);
+  }
+}
+// "Know someone who grills?" share, with a copy-link fallback.
+function eowShare(btn) {
+  var url = EOW_CONFIG.siteUrl;
+  if (navigator.share) {
+    navigator.share({ title: 'Every Other Weekend', text: 'Know someone who grills? Send them this.', url: url }).catch(function () {});
+    return;
+  }
+  var done = function () { btn.textContent = 'Link copied'; };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, function () { btn.textContent = url; });
+  else btn.textContent = url;
+}
 function eowMount(Component) {
   var c = new Component();
   var root = document.querySelector('[data-eow]');
@@ -41,6 +108,7 @@ function eowMount(Component) {
   }
   c._render = render;
   root.addEventListener('click', function (e) {
+    var sh = e.target.closest('[data-share]'); if (sh) { eowShare(sh); return; }
     var el = e.target.closest('[data-click]'); if (!el) return;
     var fn = vals()[el.getAttribute('data-click')]; if (typeof fn === 'function') fn(e);
   });
@@ -54,5 +122,6 @@ function eowMount(Component) {
     if (btn) { e.preventDefault(); btn.click(); }
   });
   render();
+  eowApplyConfig(root);
   if (c.componentDidMount) c.componentDidMount();
 }
