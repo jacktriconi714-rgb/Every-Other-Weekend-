@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Every Other Weekend — Good on everything. Even his cooking.</title>
-<meta name="description" content="Small-batch sauces for the every-other-weekend chef. Three flavors, pre-orders open. $7.99 a bottle, $0 due today.">
+<meta name="description" content="Small-batch sauces for the every-other-weekend chef. Three flavors, pre-orders open. $5.99 a bottle when you reserve now, $0 due today.">
 <meta property="og:title" content="Every Other Weekend — Good on everything. Even his cooking.">
-<meta property="og:description" content="Small-batch sauces for the every-other-weekend chef. Three flavors, pre-orders open. $7.99 a bottle, $0 due today.">
+<meta property="og:description" content="Small-batch sauces for the every-other-weekend chef. Three flavors, pre-orders open. $5.99 a bottle when you reserve now, $0 due today.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://everyotherweekendco.netlify.app/">
 <meta property="og:image" content="https://everyotherweekendco.netlify.app/img/og-share.jpg">
@@ -49,7 +49,7 @@
 <p class="lede hero-lede">A ranch-style sauce that makes whatever Dad made taste like he meant it. Three flavors. Zero cooking skills required.</p>
 <div class="hero-ctas">
 <a href="preorder.html" class="btn btn-primary">Reserve bottles · $0 today</a>
-<span class="hero-price">$7.99 a bottle · nothing due until it ships</span>
+<span class="hero-price">$5.99 a bottle when you reserve (regular $7.99) · nothing due until it ships</span>
 </div>
 <p class="hero-target">Target: spring 2027</p>
 <div class="counter" data-counter hidden>
@@ -108,7 +108,7 @@
 <p class="muted">Cool, creamy and packed with herbs. The one that fixes nearly anything that came off the stove, including the stuff that came off the stove a little too late.</p>
 <ul class="good-on" aria-label="Good on"><li>Chicken tenders</li><li>Fries</li><li>Salads</li><li>Veggie trays</li></ul>
 <div class="flavor-buy">
-<p class="price">$7.99 <span class="muted">12 fl oz (355 mL)</span></p>
+<p class="price">$5.99 <s class="price-was">$7.99</s> <span class="muted">reserved · 12 fl oz</span></p>
 <div class="row-tight"><a href="preorder.html#original" class="btn btn-primary btn-sm">Pre-order</a><a href="stores.html" class="btn btn-ghost btn-sm">Request in stores</a></div>
 </div>
 </div>
@@ -126,7 +126,7 @@
 <p class="muted">Smoky chipotle for the guy who owns the apron, the tongs and the fire extinguisher. Tastes like the barbecue actually went to plan.</p>
 <ul class="good-on" aria-label="Good on"><li>Burgers</li><li>Ribs</li><li>Tacos</li><li>Grilled corn</li></ul>
 <div class="flavor-buy">
-<p class="price">$7.99 <span class="muted">12 fl oz (355 mL)</span></p>
+<p class="price">$5.99 <s class="price-was">$7.99</s> <span class="muted">reserved · 12 fl oz</span></p>
 <div class="row-tight"><a href="preorder.html#grill" class="btn btn-primary btn-sm">Pre-order</a><a href="stores.html" class="btn btn-ghost btn-sm">Request in stores</a></div>
 </div>
 </div>
@@ -144,7 +144,7 @@
 <p class="muted">Sweet, then spicy, then cool. Named after the sound that usually means dinner is ready at Dad’s place.</p>
 <ul class="good-on" aria-label="Good on"><li>Pizza</li><li>Wings</li><li>Fried chicken</li><li>Breakfast burritos</li></ul>
 <div class="flavor-buy">
-<p class="price">$7.99 <span class="muted">12 fl oz (355 mL)</span></p>
+<p class="price">$5.99 <s class="price-was">$7.99</s> <span class="muted">reserved · 12 fl oz</span></p>
 <div class="row-tight"><a href="preorder.html#smoke" class="btn btn-primary btn-sm">Pre-order</a><a href="stores.html" class="btn btn-ghost btn-sm">Request in stores</a></div>
 </div>
 </div>
@@ -208,7 +208,7 @@
 <div class="faq-list">
 <details class="faq"><summary>Do I pay anything to pre-order?</summary><p>No. A pre-order just holds your bottles from the first batch. We’ll email you to confirm, and you only pay once it’s ready to ship.</p></details>
 <details class="faq"><summary>When does it ship?</summary><p>As soon as the first batch is bottled. Everyone on the pre-sale list gets the ship date before anyone else.</p></details>
-<details class="faq"><summary>How much is it?</summary><p>$7.99 for a 12 fl oz bottle. We’ll confirm shipping costs by email before you pay a cent.</p></details>
+<details class="faq"><summary>How much is it?</summary><p>A 12 fl oz bottle is $7.99 at launch. Reserve now and it’s $5.99. When the first batch is ready, we’ll email you and you’ll have 7 days to claim your bottles at that price. We’ll confirm shipping costs by email before you pay a cent.</p></details>
 <details class="faq"><summary>Where can I buy it in stores?</summary><p>It’s not on shelves yet. Tell us where you shop on the <a href="stores.html">Request a store</a> page and we’ll bring them a bottle.</p></details>
 <details class="faq"><summary>What’s in it? Any allergens?</summary><p>The Original is a buttermilk ranch, so it contains milk. Full ingredients and allergen info for all three flavors will be posted here and printed on every bottle before launch. Got a question now? Email us.</p></details>
 <details class="faq"><summary>Is it only for dads?</summary><p>Nope. It’s for anyone who has ever stared at a pan and hoped, and for good cooks who want a solid base to build on.</p></details>
@@ -321,7 +321,7 @@ var reply = String(self.st()[replyField] || '').trim();
 var box = e && e.target && e.target.closest ? e.target.closest('[data-form]') : null;
 var holder = box ? box.parentElement : null;
 self.setState({ sending: true, sendFailed: false, err: '', errFor: '' });
-eowSend(parts.subject || 'Website form', parts.body || '', reply).then(function () {
+eowSend(parts.subject || 'Website form', parts.body || '', reply, 'signup').then(function () {
 var o = after(); o.sending = false; o.sendFailed = false; self.setState(o);
 try { (holder || document.body).scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (x) {}
 }, function () {

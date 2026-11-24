@@ -89,7 +89,7 @@
 <div class="card card-pad stack cta-card">
 <p class="eyebrow">Can’t wait?</p>
 <h2 class="h-card">Pre-order from the first batch.</h2>
-<p class="muted">No payment today. We’ll confirm by email before anything ships.</p>
+<p class="muted">$5.99 a bottle when you reserve now (regular $7.99). No payment today.</p>
 <div><a href="preorder.html" class="btn btn-primary">Pre-order now</a></div>
 </div>
 <div class="card card-pad stack">
@@ -155,7 +155,7 @@ var q = href.split('?')[1] || '', parts = {};
 q.split('&').forEach(function (kv) { var i = kv.indexOf('='); parts[kv.slice(0, i)] = decodeURIComponent(kv.slice(i + 1)); });
 var s = self.st(), reply = String(s.nEmail || s.email || '').trim();
 self.setState({ sending: true, sendFailed: false, err: '' });
-eowSend(parts.subject || 'Website form', parts.body || '', reply).then(function () {
+eowSend(parts.subject || 'Website form', parts.body || '', reply, 'store').then(function () {
 var o = after(); o.sending = false; o.sendFailed = false; self.setState(o);
 try { var box = document.querySelector('[data-form]'); (box ? box.parentElement : document.body).scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (x) {}
 }, function () {

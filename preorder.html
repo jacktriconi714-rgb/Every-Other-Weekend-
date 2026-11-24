@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pre-order — Every Other Weekend</title>
-<meta name="description" content="Hold your bottles from the very first batch. Three flavors, zero judgement, and nothing to pay today.">
+<meta name="description" content="Hold your bottles from the very first batch for $5.99 each instead of $7.99. Three flavors, zero judgement, and nothing to pay today.">
 <meta property="og:title" content="Pre-order — Every Other Weekend">
-<meta property="og:description" content="Hold your bottles from the very first batch. Three flavors, zero judgement, and nothing to pay today.">
+<meta property="og:description" content="Hold your bottles from the very first batch for $5.99 each instead of $7.99. Three flavors, zero judgement, and nothing to pay today.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://everyotherweekendco.netlify.app/preorder.html">
 <meta property="og:image" content="https://everyotherweekendco.netlify.app/img/og-share.jpg">
@@ -43,11 +43,11 @@
 <div class="wrap band-inner">
 <p class="eyebrow">Pre-order</p>
 <h1 class="h-display">Stock the fridge.</h1>
-<p class="lede band-lede">Hold your bottles from the very first batch. Three flavors, zero judgement, and nothing to pay today.</p>
+<p class="lede band-lede">Hold your bottles from the very first batch for $5.99 each instead of $7.99. Three flavors, zero judgement, and nothing to pay today.</p>
 </div>
 </section>
 <div class="wrap">
-<p class="note-strip">Pre-sale: no card needed. We’ll email you to confirm your order and the ship date before you pay anything.</p>
+<p class="note-strip">Reserve now for $5.99 a bottle (regular $7.99). No card needed. When the batch is ready, we’ll email you and you’ll have 7 days to claim your bottles at the reserved price.</p>
 </div>
 
 <div data-if="placed" hidden>
@@ -55,8 +55,8 @@
 <div class="card card-pad stack done-card">
 <p class="eyebrow">Pre-order <span data-t="orderNo"></span></p>
 <h2 class="h-section">Your bottles are on hold.</h2>
-<p class="lede">We’re holding <span data-t="summary"></span> for you<span data-t="nComma"></span>. We’ll email you to confirm your order and ship date before you pay anything.</p>
-<p class="price"><span data-t="subtotal"></span> at launch · $0.00 today</p>
+<p class="lede">We’re holding <span data-t="summary"></span> for you<span data-t="nComma"></span> at $5.99 a bottle. When the batch is ready, we’ll email you and you’ll have 7 days to claim them at that price. Nothing to pay before then.</p>
+<p class="price"><span data-t="subtotal"></span> reserved price · $0.00 today</p>
 <p class="muted">Questions? Email <a href="mailto:everyotherweekendsauce@gmail.com?subject=Pre-order">everyotherweekendsauce@gmail.com</a> with what you’d like, or DM <a href="https://www.instagram.com/everyotherweekend/" target="_blank" rel="noopener">@everyotherweekend</a>.</p>
 <div class="row-tight">
 <button type="button" class="btn btn-primary btn-sm" data-share>Know someone who grills? Send them this</button>
@@ -76,7 +76,7 @@
 <div data-if="has1">
 <div class="line-item">
 <img class="thumb" src="img/flavor-original.jpg" alt="" width="900" height="675" loading="lazy">
-<div class="li-info"><p class="li-name">The Original</p><p class="muted li-sub">Classic buttermilk herb ranch · 12 fl oz</p><p class="li-sub">$7.99 each</p></div>
+<div class="li-info"><p class="li-name">The Original</p><p class="muted li-sub">Classic buttermilk herb ranch · 12 fl oz</p><p class="li-sub">$5.99 each <s class="price-was">$7.99</s></p></div>
 <div class="stepper"><button type="button" class="step" data-click="dec1" aria-label="Fewer The Original">−</button><span class="qty"><span data-t="q1"></span></span><button type="button" class="step" data-click="inc1" aria-label="More The Original">+</button></div>
 <p class="li-total"><span data-t="l1"></span></p>
 </div>
@@ -84,7 +84,7 @@
 <div data-if="has2">
 <div class="line-item">
 <img class="thumb" src="img/flavor-grill.jpg" alt="" width="900" height="675" loading="lazy">
-<div class="li-info"><p class="li-name">Grill Master</p><p class="muted li-sub">Smoky chipotle ranch · 12 fl oz</p><p class="li-sub">$7.99 each</p></div>
+<div class="li-info"><p class="li-name">Grill Master</p><p class="muted li-sub">Smoky chipotle ranch · 12 fl oz</p><p class="li-sub">$5.99 each <s class="price-was">$7.99</s></p></div>
 <div class="stepper"><button type="button" class="step" data-click="dec2" aria-label="Fewer Grill Master">−</button><span class="qty"><span data-t="q2"></span></span><button type="button" class="step" data-click="inc2" aria-label="More Grill Master">+</button></div>
 <p class="li-total"><span data-t="l2"></span></p>
 </div>
@@ -92,7 +92,7 @@
 <div data-if="has3">
 <div class="line-item">
 <img class="thumb" src="img/flavor-smoke.jpg" alt="" width="900" height="675" loading="lazy">
-<div class="li-info"><p class="li-name">Smoke Alarm Special</p><p class="muted li-sub">Hot honey jalapeño ranch · 12 fl oz</p><p class="li-sub">$7.99 each</p></div>
+<div class="li-info"><p class="li-name">Smoke Alarm Special</p><p class="muted li-sub">Hot honey jalapeño ranch · 12 fl oz</p><p class="li-sub">$5.99 each <s class="price-was">$7.99</s></p></div>
 <div class="stepper"><button type="button" class="step" data-click="dec3" aria-label="Fewer Smoke Alarm Special">−</button><span class="qty"><span data-t="q3"></span></span><button type="button" class="step" data-click="inc3" aria-label="More Smoke Alarm Special">+</button></div>
 <p class="li-total"><span data-t="l3"></span></p>
 </div>
@@ -108,11 +108,12 @@
 <h2 class="h-card">Pre-order summary</h2>
 <dl class="summary">
 <dt>Bottles</dt><dd><span data-t="count"></span></dd>
-<dt>Price at launch</dt><dd><span data-t="subtotal"></span></dd>
+<dt>Reserved price</dt><dd><span data-t="subtotal"></span></dd>
+<dt>You save</dt><dd><span data-t="saved"></span></dd>
 <dt>Shipping</dt><dd>Confirmed by email</dd>
 <dt>Due today</dt><dd class="due">$0.00</dd>
 </dl>
-<p class="muted small">You only pay once your order is ready to ship. We’ll confirm shipping cost and the date first, and you can change or cancel before then.</p>
+<p class="muted small">You only pay once your order is ready to ship. When it is, we’ll email you with the shipping cost and you’ll have 7 days to claim your bottles at $5.99. You can change or cancel before then.</p>
 </div>
 </div>
 <div class="stack">
@@ -173,7 +174,7 @@
 <script src="eow.js"></script>
 <script>
 class Component extends DCLogic {
-cfg() { return { price: 7.99, names: { 1: 'The Original', 2: 'Grill Master', 3: 'Smoke Alarm Special' } }; }
+cfg() { return { price: 5.99, regular: 7.99, names: { 1: 'The Original', 2: 'Grill Master', 3: 'Smoke Alarm Special' } }; }
 money(n) { return '$' + n.toFixed(2); }
 st() {
 if (!this._ord) this._ord = 'EOW-' + (1000 + Math.floor(Math.random() * 9000));
@@ -206,7 +207,7 @@ var q = href.split('?')[1] || '', parts = {};
 q.split('&').forEach(function (kv) { var i = kv.indexOf('='); parts[kv.slice(0, i)] = decodeURIComponent(kv.slice(i + 1)); });
 var s = self.st(), reply = String(s.nEmail || s.email || '').trim();
 self.setState({ sending: true, sendFailed: false, err: '' });
-eowSend(parts.subject || 'Website form', parts.body || '', reply).then(function () {
+eowSend(parts.subject || 'Website form', parts.body || '', reply, 'preorder').then(function () {
 var o = after(); o.sending = false; o.sendFailed = false; self.setState(o);
 try { var box = document.querySelector('[data-form]'); (box ? box.parentElement : document.body).scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (x) {}
 }, function () {
@@ -223,11 +224,11 @@ var lines = qty.map(function (q, i) { return q ? q + ' × ' + C.names[i + 1] : n
 var href = this.mailHref('Pre-order ' + s.orderNo + ': ' + (s.name.trim() || 'new order'), [
 'Hi Every Other Weekend!', '', 'I’d like to pre-order from the first batch:', ''
 ].concat(lines.map(function (l) { return '  ' + l; })).concat([
-'', 'Bottles: ' + count + ' (' + money(subtotal) + ' at launch, $0 today)', '',
+'', 'Bottles: ' + count + ' (' + money(subtotal) + ' reserved price, $0 today)', '',
 'Name: ' + (s.name.trim() || '-'), 'Email: ' + (s.email.trim() || '-'), 'ZIP: ' + (s.zip || '-'), 'Phone: ' + (s.phone.trim() || '-'),
 'Note: ' + (s.note.trim() || '-'), '', 'Pre-order number: ' + s.orderNo, '(Sent from the Every Other Weekend website)']));
 var v = { placed: s.placed, notPlaced: !s.placed, empty: count === 0, orderNo: s.orderNo, err: s.err, hasErr: !!s.err,
-count: count, subtotal: money(subtotal), orderHref: href, summary: lines.join(', ') || 'nothing yet',
+count: count, subtotal: money(subtotal), saved: money(count * (C.regular - C.price)), orderHref: href, summary: lines.join(', ') || 'nothing yet',
 nComma: s.name.trim() ? ', ' + s.name.trim().split(/\s+/)[0] : '',
 place: this.submitter(function () {
 var c = self.st(), miss = [];

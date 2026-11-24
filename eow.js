@@ -9,14 +9,23 @@ var EOW_CONFIG = Object.assign({
   batchTotal: null,     // set to a number to show a progress bar
   videos: [],           // [{ url, poster, title }] newest first; strip hidden while empty
   bottles: { original: false, grill: false, smoke: false }, // true once img/bottle-<key>.webp exists
-  showPhotoSlots: null  // null = dashed 'photo goes here' boxes on previews only; true/false forces
+  showPhotoSlots: true, // dashed 'photo goes here' boxes; set false once real bottle photos are in (null = previews only)
+  confirmEmails: false  // true sends the EOW_CONFIRM texts to whoever fills a form (turn on once Jack approves the wording)
 }, window.EOW_CONFIG_OVERRIDE || {});
+// Confirmation emails sent to the person who filled the form (only while EOW_CONFIG.confirmEmails is true).
+var EOW_CONFIRM = {
+  signup: "Thanks for joining the Every Other Weekend pre-sale list!\n\nYou're officially first in line. We'll email you when Batch 001 is ready to ship and when we land on a shelf near you. No spam, just sauce news.\n\nWant to lock in bottles now? Reserve them for $5.99 each (regular $7.99), nothing to pay today: https://everyotherweekendco.netlify.app/preorder.html\n\nTalk soon,\nJack\nEvery Other Weekend\nInstagram and TikTok: @everyotherweekend",
+  preorder: "Your Every Other Weekend pre-order is in!\n\nWe're holding your bottles from Batch 001 at the reserved price of $5.99 each (regular $7.99). There's nothing to pay today.\n\nHere's what happens next: when the batch is bottled and ready to ship, we'll email you with your total and shipping cost. You'll then have 7 days to claim your bottles at the reserved price. Want to change or cancel before then? Just reply to this email.\n\nThanks for backing us this early. It means a lot.\n\nJack\nEvery Other Weekend\nInstagram and TikTok: @everyotherweekend",
+  store: "Thanks for requesting Every Other Weekend at your store!\n\nWe got your request. Every request goes on the list we bring when we pitch that store, and the more people ask, the faster it happens. We'll email you the day it lands on the shelf.\n\nCan't wait that long? Reserve bottles from the first batch for $5.99 each (regular $7.99), nothing to pay today: https://everyotherweekendco.netlify.app/preorder.html\n\nJack\nEvery Other Weekend\nInstagram and TikTok: @everyotherweekend"
+};
 var EOW_FORM_URL = 'https://formsubmit.co/ajax/everyotherweekendsauce@gmail.com';
-function eowSend(subject, message, replyTo) {
+function eowSend(subject, message, replyTo, kind) {
+  var data = { _subject: subject, _template: 'box', _replyto: replyTo, email: replyTo, message: message, _honey: '' };
+  if (EOW_CONFIG.confirmEmails && kind && EOW_CONFIRM[kind]) data._autoresponse = EOW_CONFIRM[kind];
   return fetch(EOW_FORM_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify({ _subject: subject, _template: 'box', _replyto: replyTo, email: replyTo, message: message, _honey: '' })
+    body: JSON.stringify(data)
   }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) {
     if (!r.ok || String(j.success) === 'false') { if (window.console) console.warn('Form service said:', j.message || r.status); throw new Error(j.message || 'send failed'); }
     return j;

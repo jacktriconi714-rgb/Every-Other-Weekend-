@@ -123,3 +123,4 @@
 .flavor-photo .photo-slot { inset: 12px; }
 .hero-slot { top: 24px; right: 24px; bottom: 24px; left: 52%; }
 @media (max-width: 720px) { .hero-slot { top: 12px; left: 12px; right: 12px; bottom: auto; height: calc(46vw - 24px); min-height: 196px; } }
+.price-was { color: var(--muted); font-size: .7em; font-weight: 500; margin-left: 4px; }
