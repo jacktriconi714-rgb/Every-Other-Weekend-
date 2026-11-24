@@ -12,36 +12,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
-<style>
-body{margin:0;background:#F4EBDD}
-.field{display:flex;flex-direction:column;gap:6px;min-width:0}
-.field span{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#6B5F4D}
-.field input,.field textarea{min-height:50px;padding:0 16px;border:2px solid #1D1A16;border-radius:12px;background:#FFFFFF;font:inherit;font-size:16px;color:#1D1A16;width:100%;box-sizing:border-box}
-.field textarea{padding:12px 16px;min-height:90px;resize:vertical}
-.chip{transition:transform .2s ease,background-color .2s ease}
-.chip:hover{transform:translateY(-1px)}
-.faq summary{cursor:pointer;list-style:none}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:'+';font-size:28px;line-height:1;font-weight:500;flex:none}
-.faq[open] summary::after{content:'\2212'}
-footer a:hover{text-decoration:underline}
-a{color:#1D1A16}a:hover{color:#A63A22}
-input:focus,button:focus-visible,a:focus-visible{outline:3px solid #1D1A16;outline-offset:3px}
-.cta{transition:transform .2s ease,box-shadow .2s ease}
-.cta:hover{transform:translateY(-2px)}
-@media (prefers-reduced-motion:reduce){.cta{transition:none}}
-.pin{transition:transform .55s cubic-bezier(.2,.8,.2,1)}
-.pinbody{transform-box:fill-box;transform-origin:50% 100%;transition:transform .3s ease}
-.pin.on .pinbody{transform:scale(1.22)}
-.pin.on .ring{opacity:1}
-.ring{opacity:0;transition:opacity .3s}
-.pulse{transform-box:fill-box;transform-origin:center;animation:pulse 2.2s ease-out infinite}
-@keyframes pulse{from{transform:scale(.5);opacity:.55}to{transform:scale(2);opacity:0}}
-.store{transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
-.store:hover{transform:translateY(-2px)}
-@media (prefers-reduced-motion:reduce){.pulse{animation:none}.pin,.pinbody,.store{transition:none}}
-</style>
 <link rel="stylesheet" href="eow.css">
+<link rel="stylesheet" href="sub.css">
 </head>
 <body>
 <div data-eow>
@@ -54,63 +26,72 @@ input:focus,button:focus-visible,a:focus-visible{outline:3px solid #1D1A16;outli
 </div>
 </nav>
 </header>
-<section style="max-width: 1200px; margin: 0 auto; padding: 40px 24px 32px; display: flex; flex-direction: column; gap: 16px">
-<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #A63A22">Stores</p>
-<h1 style="margin: 0; font-family: var(--font); font-weight: 900; text-transform: uppercase; font-size: clamp(48px, 6vw, 84px); line-height: 0.95; letter-spacing: -0.01em">Not on shelves. Yet.</h1>
-<p style="margin: 0; font-size: 19px; line-height: 1.55; color: #4A4238; max-width: 38rem">We’re pitching grocery stores now. Tell us where you shop and we’ll show up with a bottle and your request in hand. The more people ask for a store, the faster it happens.</p>
+<main>
+<section class="band">
+<picture class="band-photo">
+<source srcset="img/band-stores.webp" type="image/webp">
+<img src="img/band-stores.jpg" alt="Cheese pizza with cherry tomatoes and rosemary on a wooden board" width="1800" height="600">
+</picture>
+<div class="wrap band-inner">
+<p class="eyebrow">Stores</p>
+<h1 class="h-display">Not on shelves. Yet.</h1>
+<p class="lede band-lede">We’re pitching grocery stores now. Tell us where you shop and we’ll show up with a bottle and your request in hand. The more people ask for a store, the faster it happens.</p>
+</div>
 </section>
 
-<section style="max-width: 1200px; margin: 0 auto; padding: 16px 24px 110px; display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-start">
-<div style="flex: 1 1 520px; min-width: 0">
+<section class="wrap section-sm order-grid">
+<div class="stack">
 <div data-if="notSent">
-<div data-form style="background: #FBF5EA; border: 3px solid #1D1A16; border-radius: 20px; box-shadow: 10px 10px 0 #1D1A16; padding: 36px; display: flex; flex-direction: column; gap: 20px">
-<h2 style="margin: 0; font-family: var(--font); font-weight: 900; text-transform: uppercase; font-size: 32px; line-height: 1">Request a store</h2>
-<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px">
-<label class="field" style="grid-column: 1 / -1"><span>Store name</span><input data-val="store" data-input="setStore" placeholder="e.g. the grocery store on Main St" required></label>
+<div data-form class="card card-pad stack">
+<h2 class="h-card">Request a store</h2>
+<div class="field-grid">
+<label class="field field-wide"><span>Store name</span><input data-val="store" data-input="setStore" placeholder="e.g. the grocery store on Main St" required></label>
 <label class="field"><span>City or ZIP</span><input data-val="where" data-input="setWhere" autocomplete="address-level2" required></label>
 <label class="field"><span>First name</span><input data-val="name" data-input="setName" autocomplete="given-name"></label>
-<label class="field" style="grid-column: 1 / -1"><span>Your email</span><input data-val="email" data-input="setEmail" type="email" autocomplete="email" required></label>
+<label class="field field-wide"><span>Your email</span><input data-val="email" data-input="setEmail" type="email" autocomplete="email" required></label>
 </div>
-<div data-if="hasErr"><p role="alert" style="margin: 0; padding: 12px 16px; border-radius: 12px; background: #F6E1D8; color: #8E2E19; font-size: 15px; font-weight: 600"><span data-t="err"></span></p></div>
-<a data-fallback hidden href="mailto:everyotherweekendsauce@gmail.com" style="display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 10px 24px; box-sizing: border-box; border: 2px solid #1D1A16; border-radius: 999px; background: #FFFFFF; color: #1D1A16; font-weight: 700; font-size: 16px; text-decoration: none">Send my details by email</a>
-<button type="button" data-click="submit" data-busy class="cta" style="cursor: pointer; display: inline-flex; align-items: center; justify-content: center; text-align: center; min-height: 64px; padding: 14px 32px; box-sizing: border-box; border: 3px solid #1D1A16; border-radius: 999px; background: #A63A22; color: #FBF5EA; font-family: var(--font); font-weight: 900; text-transform: uppercase; font-size: clamp(17px, 4.6vw, 21px); letter-spacing: 0.02em; text-decoration: none; box-shadow: 5px 5px 0 #1D1A16">Request this store</button>
-<p style="margin: 0; font-size: 14px; line-height: 1.5; color: #4A4238">We’ll add your vote and tell you the day it lands on that shelf.</p>
+<div data-if="hasErr"><p class="form-error" role="alert"><span data-t="err"></span></p></div>
+<a data-fallback hidden href="mailto:everyotherweekendsauce@gmail.com" class="btn btn-ghost">Send my details by email</a>
+<button type="button" data-click="submit" data-busy class="btn btn-primary">Request this store</button>
+<p class="fine">We’ll add your vote and tell you the day it lands on that shelf.</p>
 </div>
 </div>
 <div data-if="sent">
-<div role="status" style="background: #FBF5EA; border: 3px solid #1D1A16; border-radius: 20px; box-shadow: 10px 10px 0 #1D1A16; padding: 40px 36px; display: flex; flex-direction: column; gap: 16px">
-<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #2D5A3A">Request sent</p>
-<h2 style="margin: 0; font-family: var(--font); font-weight: 900; text-transform: uppercase; font-size: clamp(30px, 3.4vw, 42px); line-height: 1">Your vote counts.</h2>
-<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #4A4238">We’ve got your request for <span data-t="storeLabel"></span>. We’ll take it from here and email you when it’s on the shelf.</p>
-<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #4A4238">Questions? Email <a href="mailto:everyotherweekendsauce@gmail.com?subject=Store%20request" style="font-weight: 700; overflow-wrap: anywhere">everyotherweekendsauce@gmail.com</a> with the store’s name and city, or DM <a href="https://www.instagram.com/everyotherweekend/" target="_blank" rel="noopener" style="font-weight: 700">@everyotherweekend</a>.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 12px; padding-top: 6px">
-<button type="button" data-click="another" style="display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 10px 24px; box-sizing: border-box; border: 2px solid #1D1A16; border-radius: 999px; background: transparent; color: #1D1A16; font: inherit; font-weight: 700; font-size: 16px; text-decoration: none; cursor: pointer">Request another store</button>
+<div role="status" class="card card-pad stack">
+<p class="eyebrow">Request sent</p>
+<h2 class="h-section">Your vote counts.</h2>
+<p class="muted">We’ve got your request for <span data-t="storeLabel"></span>. We’ll take it from here and email you when it’s on the shelf.</p>
+<p class="muted">Questions? Email <a href="mailto:everyotherweekendsauce@gmail.com?subject=Store%20request">everyotherweekendsauce@gmail.com</a> with the store’s name and city, or DM <a href="https://www.instagram.com/everyotherweekend/" target="_blank" rel="noopener">@everyotherweekend</a>.</p>
+<div class="row-tight">
+<button type="button" class="btn btn-primary btn-sm" data-share>Know someone who grills? Send them this</button>
+<button type="button" class="btn btn-ghost btn-sm" data-click="another">Request another store</button>
 </div>
 </div>
 </div>
 </div>
-
-<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
-<div style="padding: 36px; border-radius: 20px; background: #FBF5EA; border: 2px solid #D8CDBC; display: flex; flex-direction: column; gap: 20px">
-<h2 style="margin: 0; font-family: var(--font); font-weight: 900; text-transform: uppercase; font-size: 28px; line-height: 1">How it works</h2>
-<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 18px">
-<li style="display: flex; gap: 16px; align-items: flex-start"><span style="flex: none; width: 44px; height: 44px; border-radius: 50%; background: #2D5A3A; color: #FBF5EA; display: grid; place-items: center; font-family: var(--font); font-weight: 900; text-transform: uppercase; font-size: 20px">1</span><span style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 18px; font-weight: 700">You name the store.</span><span style="font-size: 16px; line-height: 1.5; color: #4A4238">Big chain or the corner shop. Any store you actually go to.</span></span></li>
-<li style="display: flex; gap: 16px; align-items: flex-start"><span style="flex: none; width: 44px; height: 44px; border-radius: 50%; background: #A63A22; color: #FBF5EA; display: grid; place-items: center; font-family: var(--font); font-weight: 900; text-transform: uppercase; font-size: 20px">2</span><span style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 18px; font-weight: 700">We knock on their door.</span><span style="font-size: 16px; line-height: 1.5; color: #4A4238">With a bottle, a pitch and the list of people who asked.</span></span></li>
-<li style="display: flex; gap: 16px; align-items: flex-start"><span style="flex: none; width: 44px; height: 44px; border-radius: 50%; background: #8A5E06; color: #FBF5EA; display: grid; place-items: center; font-family: var(--font); font-weight: 900; text-transform: uppercase; font-size: 20px">3</span><span style="display: flex; flex-direction: column; gap: 4px"><span style="font-size: 18px; font-weight: 700">You hear first.</span><span style="font-size: 16px; line-height: 1.5; color: #4A4238">The day it lands on that shelf, you get an email.</span></span></li>
+<div class="stack">
+<div class="card card-pad stack">
+<h2 class="h-card">How it works</h2>
+<ol class="steps">
+<li><span class="step-n">1</span><span><strong>You name the store.</strong><span class="muted">Big chain or the corner shop. Any store you actually go to.</span></span></li>
+<li><span class="step-n">2</span><span><strong>We knock on their door.</strong><span class="muted">With a bottle, a pitch and the list of people who asked.</span></span></li>
+<li><span class="step-n">3</span><span><strong>You hear first.</strong><span class="muted">The day it lands on that shelf, you get an email.</span></span></li>
 </ol>
 </div>
-<div style="padding: 36px; border-radius: 20px; background: #1D1A16; color: #FBF5EA; display: flex; flex-direction: column; gap: 14px">
-<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #E2A72E">Can’t wait?</p>
-<h2 style="margin: 0; font-family: var(--font); font-weight: 900; text-transform: uppercase; font-size: 28px; line-height: 1.05">Pre-order from the first batch.</h2>
-<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #D8CDBC">No payment today. We’ll confirm by email before anything ships.</p>
-<a href="preorder.html" class="cta" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 50px; padding: 12px 28px; box-sizing: border-box; border-radius: 999px; background: #FBF5EA; color: #1D1A16; font-weight: 700; font-size: 16px; text-decoration: none">Pre-order now</a>
+<div class="card card-pad stack cta-card">
+<p class="eyebrow">Can’t wait?</p>
+<h2 class="h-card">Pre-order from the first batch.</h2>
+<p class="muted">No payment today. We’ll confirm by email before anything ships.</p>
+<div><a href="preorder.html" class="btn btn-primary">Pre-order now</a></div>
 </div>
-<div style="padding: 28px 36px; border-radius: 20px; border: 2px dashed #1D1A16; display: flex; flex-direction: column; gap: 8px">
-<h2 style="margin: 0; font-size: 20px; font-weight: 700">Run a store?</h2>
-<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #4A4238">We’d love to talk wholesale. <a href="mailto:everyotherweekendsauce@gmail.com?subject=Wholesale%20inquiry" style="font-weight: 700">Email us</a> and we’ll send pricing and samples.</p>
+<div class="card card-pad stack">
+<h2 class="h-card">Run a store?</h2>
+<p class="muted">We’d love to talk wholesale. <a href="mailto:everyotherweekendsauce@gmail.com?subject=Wholesale%20inquiry">Email us</a> and we’ll send pricing and samples.</p>
 </div>
 </div>
 </section>
+</main>
+
 <footer id="contact" class="site-footer">
 <div class="wrap">
 <div class="cols">
