@@ -3,6 +3,13 @@ class DCLogic {
   constructor() { this.props = {}; this.state = {}; }
   setState(o) { this.state = Object.assign({}, this.state, o); if (this._render) this._render(); }
 }
+var EOW_CONFIG = Object.assign({
+  siteUrl: 'https://everyotherweekendco.netlify.app',
+  reserved: 0,          // bottles reserved; counter hidden while 0
+  batchTotal: null,     // set to a number to show a progress bar
+  videos: [],           // [{ url, poster, title }] newest first; strip hidden while empty
+  bottles: { original: false, grill: false, smoke: false } // true once img/bottle-<key>.webp exists
+}, window.EOW_CONFIG_OVERRIDE || {});
 var EOW_FORM_URL = 'https://formsubmit.co/ajax/everyotherweekendsauce@gmail.com';
 function eowSend(subject, message, replyTo) {
   return fetch(EOW_FORM_URL, {
