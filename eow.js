@@ -8,7 +8,8 @@ var EOW_CONFIG = Object.assign({
   reserved: 0,          // bottles reserved; counter hidden while 0
   batchTotal: null,     // set to a number to show a progress bar
   videos: [],           // [{ url, poster, title }] newest first; strip hidden while empty
-  bottles: { original: false, grill: false, smoke: false } // true once img/bottle-<key>.webp exists
+  bottles: { original: false, grill: false, smoke: false }, // true once img/bottle-<key>.webp exists
+  showPhotoSlots: null  // null = dashed 'photo goes here' boxes on previews only; true/false forces
 }, window.EOW_CONFIG_OVERRIDE || {});
 var EOW_FORM_URL = 'https://formsubmit.co/ajax/everyotherweekendsauce@gmail.com';
 function eowSend(subject, message, replyTo) {
@@ -22,6 +23,11 @@ function eowSend(subject, message, replyTo) {
   }); });
 }
 var EOW_FLAVOR_NAMES = { original: 'The Original', grill: 'Grill Master', smoke: 'Smoke Alarm Special' };
+// Dashed "photo goes here" boxes: shown on Netlify previews and local copies, never on the live site.
+function eowShowPhotoSlots(host) {
+  host = String(host || '');
+  return /^(localhost|127\.0\.0\.1)$/.test(host) || /^deploy-preview-\d+--/.test(host);
+}
 // Shows config-gated content. Everything it touches starts hidden in the markup.
 function eowApplyConfig(root) {
   var C = EOW_CONFIG;
@@ -67,6 +73,8 @@ function eowApplyConfig(root) {
     img.alt = (EOW_FLAVOR_NAMES[key] || key) + ' bottle';
     img.hidden = false;
   });
+  var slotsOn = C.showPhotoSlots == null ? eowShowPhotoSlots(window.location.hostname) : !!C.showPhotoSlots;
+  root.querySelectorAll('[data-photo-slot]').forEach(function (el) { el.hidden = !slotsOn; });
   var sticky = root.querySelector('[data-sticky]');
   var heroEl = document.getElementById('top'), findEl = document.getElementById('find');
   if (sticky && heroEl && 'IntersectionObserver' in window && window.matchMedia) {

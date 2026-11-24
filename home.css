@@ -15,7 +15,6 @@
   linear-gradient(90deg, rgba(15,13,12,0.96) 0%, rgba(15,13,12,0.85) 38%, rgba(15,13,12,0.25) 72%, rgba(15,13,12,0.1) 100%),
   linear-gradient(180deg, rgba(15,13,12,0) 55%, rgba(15,13,12,1) 100%); }
 .hero-inner { position: relative; width: 100%; padding-top: clamp(64px, 10vw, 140px); padding-bottom: clamp(48px, 7vw, 96px); }
-.hero-inner.glow::before { inset: auto auto -30% -20%; }
 .hero-copy { max-width: 640px; display: flex; flex-direction: column; gap: 22px; }
 .hero-lede { color: #D9CFC2; }
 .hero-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
@@ -90,7 +89,7 @@
 .faq p { margin: 0; padding: 0 0 24px; font-size: 17px; line-height: 1.65; color: #D9CFC2; max-width: 46rem; }
 
 /* pre-sale list */
-.find { border-top: 1px solid var(--line); background: radial-gradient(ellipse 60% 70% at 85% 30%, rgba(226,88,43,0.16), rgba(15,13,12,0) 70%), var(--bg); }
+.find { border-top: 1px solid var(--line); background: var(--bg); }
 .find-inner { display: flex; flex-wrap: wrap; gap: 48px 64px; align-items: flex-start; }
 .find-inner > div { flex: 1 1 400px; min-width: 0; }
 .field-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
@@ -116,3 +115,11 @@
 .share-btn { align-self: flex-start; }
 .sticky-cta { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 50; box-shadow: 0 12px 30px -8px rgba(0,0,0,0.7); }
 @media (min-width: 721px) { .sticky-cta { display: none !important; } }
+
+/* dashed "photo goes here" boxes (previews only, see eowShowPhotoSlots) */
+.photo-slot { position: absolute; z-index: 2; border: 2px dashed rgba(244, 237, 226, 0.75); border-radius: var(--radius); display: flex; align-items: flex-end; padding: 12px; pointer-events: none; }
+.photo-slot .slot-label { display: flex; flex-direction: column; gap: 2px; padding: 8px 12px; border-radius: 8px; background: rgba(15, 13, 12, 0.85); color: var(--text); font-size: 13px; line-height: 1.35; }
+.photo-slot .slot-label strong { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--hi); }
+.flavor-photo .photo-slot { inset: 12px; }
+.hero-slot { top: 24px; right: 24px; bottom: 24px; left: 52%; }
+@media (max-width: 720px) { .hero-slot { top: 12px; left: 12px; right: 12px; bottom: auto; height: calc(46vw - 24px); min-height: 196px; } }
