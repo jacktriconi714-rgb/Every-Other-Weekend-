@@ -10,7 +10,7 @@ var EOW_CONFIG = Object.assign({
   videos: [],           // [{ url, poster, title }] newest first; strip hidden while empty
   bottles: { original: false, grill: false, smoke: false }, // true once img/bottle-<key>.webp exists
   showPhotoSlots: true, // dashed 'photo goes here' boxes; set false once real bottle photos are in (null = previews only)
-  confirmEmails: false  // true sends the EOW_CONFIRM texts to whoever fills a form (turn on once Jack approves the wording)
+  confirmEmails: true   // sends the EOW_CONFIRM texts to whoever fills a form (Jack approved Nov 24, 2026)
 }, window.EOW_CONFIG_OVERRIDE || {});
 // Confirmation emails sent to the person who filled the form (only while EOW_CONFIG.confirmEmails is true).
 var EOW_CONFIRM = {

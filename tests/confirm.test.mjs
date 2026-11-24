@@ -6,8 +6,8 @@ async function signup(page) {
   await page.waitForTimeout(300);
 }
 
-test('noConfirmationUntilApproved', async () => {
-  const { page, posts } = await openPage('/');
+test('noConfirmationWhenOff', async () => {
+  const { page, posts } = await openPage('/', { config: { confirmEmails: false } });
   await signup(page);
   eq(posts.length, 1);
   eq(posts[0]._autoresponse, undefined, 'autoresponse sent while off');
