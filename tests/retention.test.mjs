@@ -109,3 +109,16 @@ test('gatedSectionsHiddenWithoutJs', async () => {
     eq(await page.locator(sel + ':visible').count(), 0, sel + ' visible without JS');
   }
 });
+
+test('stickyBarHiddenOverFooter', async () => {
+  const { page } = await openPage('/', { viewport: { width: 390, height: 844 } });
+  await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight)); await page.waitForTimeout(400);
+  assert(!(await page.locator('[data-sticky]').isVisible()), 'sticky bar covers the footer');
+});
+
+test('noFakeThanksWithoutJs', async () => {
+  for (const p of ['/', '/preorder.html', '/stores.html']) {
+    const { page } = await openPage(p, { javaScriptEnabled: false });
+    eq(await page.locator('[role=status]:visible').count(), 0, p + ' shows a thank-you without JS');
+  }
+});

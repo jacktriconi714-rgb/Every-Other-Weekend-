@@ -73,7 +73,7 @@ function eowApplyConfig(root) {
     var mq = window.matchMedia('(max-width: 720px)'), pastHero = false, atFind = false;
     var update = function () { sticky.hidden = !(mq.matches && pastHero && !atFind); };
     new IntersectionObserver(function (es) { es.forEach(function (e) { pastHero = !e.isIntersecting && e.boundingClientRect.top < 0; }); update(); }).observe(heroEl);
-    if (findEl) new IntersectionObserver(function (es) { es.forEach(function (e) { atFind = e.isIntersecting; }); update(); }).observe(findEl);
+    if (findEl) new IntersectionObserver(function (es) { es.forEach(function (e) { atFind = e.isIntersecting || e.boundingClientRect.top < 0; }); update(); }).observe(findEl);
     if (mq.addEventListener) mq.addEventListener('change', update);
   }
 }
