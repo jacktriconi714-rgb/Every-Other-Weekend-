@@ -32,7 +32,11 @@ function eowMount(Component) {
     root.querySelectorAll('[data-val]').forEach(function (el) { var x = v[el.getAttribute('data-val')]; x = x == null ? '' : String(x); if (el.value !== x) el.value = x; });
     root.querySelectorAll('[data-style]').forEach(function (el) { el.style.cssText = el.getAttribute('data-base') + '; ' + (v[el.getAttribute('data-style')] || ''); });
     root.querySelectorAll('[data-pressed]').forEach(function (el) { el.setAttribute('aria-pressed', v[el.getAttribute('data-pressed')]); });
-    root.querySelectorAll('[data-fallback]').forEach(function (el) { el.hidden = !c.state.sendFailed; el.href = v.notifyHref || v.reqHref || v.orderHref || 'mailto:everyotherweekendsauce@gmail.com'; });
+    root.querySelectorAll('[data-fallback]').forEach(function (el) {
+      var key = el.getAttribute('data-fallback'), forKey = el.getAttribute('data-for');
+      el.hidden = forKey ? c.state.sendFailed !== forKey : !c.state.sendFailed;
+      el.href = (key && v[key]) || v.notifyHref || v.reqHref || v.orderHref || 'mailto:everyotherweekendsauce@gmail.com';
+    });
     root.querySelectorAll('[data-busy]').forEach(function (el) { el.disabled = !!c.state.sending; el.style.opacity = c.state.sending ? '0.6' : ''; });
   }
   c._render = render;

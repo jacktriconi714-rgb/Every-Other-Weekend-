@@ -51,6 +51,7 @@ export async function openPage(p, opts = {}) {
     javaScriptEnabled: opts.javaScriptEnabled !== false, permissions: opts.permissions || [] });
   open.push(ctx);
   const page = await ctx.newPage();
+  page.setDefaultTimeout(4000);
   const posts = [];
   page.errors = [];
   page.on('pageerror', (e) => page.errors.push(String(e)));

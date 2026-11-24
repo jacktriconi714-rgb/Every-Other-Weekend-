@@ -19,7 +19,7 @@ test('presaleFormSendsSameEmail', async () => {
   eq(posts[0]._subject, 'Pre-sale list: sam@example.com');
   eq(posts[0]._replyto, 'sam@example.com');
   for (const s of ['Name: Sam', 'ZIP: 90210', 'Most excited for: Grill Master']) assert(posts[0].message.includes(s), 'message missing ' + s);
-  assert(await page.getByText('You’re on the list').first().isVisible(), 'thank-you not visible');
+  assert(await page.locator('#find').getByText('You’re on the list').isVisible(), 'thank-you not visible');
 });
 
 test('presaleRejectsBadEmail', async () => {
